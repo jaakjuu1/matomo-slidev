@@ -1,386 +1,364 @@
 ---
-# try also 'default' to start simple
 theme: seriph
-# random image from a curated Unsplash collection by Anthony
-# like them? see https://unsplash.com/collections/94734566/slidev
 background: https://source.unsplash.com/collection/94734566/1920x1080
-# apply any windi css classes to the current slide
 class: 'text-center'
-# https://sli.dev/custom/highlighters.html
 highlighter: shiki
-# show line numbers in code blocks
 lineNumbers: false
-# some information about the slides, markdown enabled
 info: |
-  ## Slidev Starter Template
-  Presentation slides for developers.
-
-  Learn more at [Sli.dev](https://sli.dev)
-# persist drawings in exports and build
+  ## Matomo-tilin auditointi
+  Esitelmä Matomo-tilin auditointia varten Riihimäen kaupungille.
 drawings:
   persist: false
-# use UnoCSS (experimental)
 css: unocss
-wakeLock: "build"
 ---
 
-# Welcome to Slidev
+# Matomo-tilin auditointi
+## Riihimäen kaupunki
 
-Presentation slides for developers
+<div class="text-orange-500 text-2xl font-bold mb-4">
+Verkkoanalytiikkastrategian kehittäminen
+</div>
 
 <div class="pt-12">
-  <span @click="$slidev.nav.next" class="px-2 py-1 rounded cursor-pointer" hover="bg-white bg-opacity-10">
-    Press Space for next page <carbon:arrow-right class="inline"/>
+  <span @click="$slidev.nav.next" class="px-4 py-2 rounded cursor-pointer bg-white bg-opacity-10 hover:bg-opacity-20 transition duration-200 ease-in-out">
+    Aloita esitys <carbon:arrow-right class="inline"/>
   </span>
 </div>
 
 <div class="abs-br m-6 flex gap-2">
-  <button @click="$slidev.nav.openInEditor()" title="Open in Editor" class="text-xl icon-btn opacity-50 !border-none !hover:text-white">
-    <carbon:edit />
-  </button>
-  <a href="https://github.com/slidevjs/slidev" target="_blank" alt="GitHub"
+  <a href="https://matomo.org" target="_blank" alt="Matomo Website"
     class="text-xl icon-btn opacity-50 !border-none !hover:text-white">
-    <carbon-logo-github />
+    <carbon:logo-github />
   </a>
 </div>
 
-<!--
-The last comment block of each slide will be treated as slide notes. It will be visible and editable in Presenter Mode along with the slide. [Read more in the docs](https://sli.dev/guide/syntax.html#notes)
--->
+<div class="abs-bl m-6 flex gap-2">
+  <div class="text-sm opacity-50">
+    Esittäjä: Juuso Jaakkola<br>
+    Päivämäärä: 17.10.2024
+  </div>
+</div>
 
 ---
-
-# What is Slidev?
-
-Slidev is a slides maker and presenter designed for developers, consist of the following features
-
-- 📝 **Text-based** - focus on the content with Markdown, and then style them later
-- 🎨 **Themable** - theme can be shared and used with npm packages
-- 🧑‍💻 **Developer Friendly** - code highlighting, live coding with autocompletion
-- 🤹 **Interactive** - embedding Vue components to enhance your expressions
-- 🎥 **Recording** - built-in recording and camera view
-- 📤 **Portable** - export into PDF, PNGs, or even a hostable SPA
-- 🛠 **Hackable** - anything possible on a webpage
-
-<br>
-<br>
-
-Read more about [Why Slidev?](https://sli.dev/guide/why)
-
-<!--
-You can have `style` tag in markdown to override the style for the current page.
-Learn more: https://sli.dev/guide/syntax#embedded-styles
--->
-
-<style>
-h1 {
-  background-color: #2B90B6;
-  background-image: linear-gradient(45deg, #4EC5D4 10%, #146b8c 20%);
-  background-size: 100%;
-  -webkit-background-clip: text;
-  -moz-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  -moz-text-fill-color: transparent;
-}
-</style>
-
+layout: two-cols
 ---
 
-# Navigation
+<!-- {id: esityslista} -->
 
-Hover on the bottom-left corner to see the navigation's controls panel, [learn more](https://sli.dev/guide/navigation.html)
+# Esityslista
 
-### Keyboard Shortcuts
+<div class="text-sm">
 
-|     |     |
-| --- | --- |
-| <kbd>right</kbd> / <kbd>space</kbd>| next animation or slide |
-| <kbd>left</kbd>  / <kbd>shift</kbd><kbd>space</kbd> | previous animation or slide |
-| <kbd>up</kbd> | previous slide |
-| <kbd>down</kbd> | next slide |
+1. Johdanto Matomoon
+2. Auditoinnin tavoitteet
+3. Keskeiset painopistealueet
+4. Menetelmät
+5. Havainnot ja suositukset
+6. Seuraavat vaiheet
 
-<!-- https://sli.dev/guide/animations.html#click-animations -->
-<img
-  v-click
-  class="absolute -bottom-9 -left-7 w-80 opacity-50"
-  src="https://sli.dev/assets/arrow-bottom-left.svg"
-/>
-<p v-after class="absolute bottom-23 left-45 opacity-30 transform -rotate-10">Here!</p>
+</div>
+
+::right::
+
+<div class="pl-4 pt-10">
+  <div class="w-full h-64 bg-blue-500 rounded-lg flex items-center justify-center text-white text-4xl font-bold">
+    Analytiikka
+  </div>
+</div>
 
 ---
 layout: image-right
-image: https://source.unsplash.com/collection/94734566/1920x1080
+image: 'https://source.unsplash.com/random/800x600'
 ---
 
-# Code
+# Johdanto Matomoon
 
-Use code snippets and get the highlighting directly![^1]
+<v-clicks>
 
-```ts {all|2|1-6|9|all}
-interface User {
-  id: number
-  firstName: string
-  lastName: string
-  role: string
-}
+- 🔓 Avoimen lähdekoodin verkkoanalytiikka-alusta
+- 🛡️ Yksityisyyteen keskittyvä vaihtoehto Google Analyticsille
+- 🖥️ Itse ylläpidetty tai pilvipalveluna tarjottu
+- 🔧 Muokattava ja laajennettava
 
-function updateUser(id: number, update: User) {
-  const user = getUser(id)
-  const newUser = { ...user, ...update }
-  saveUser(id, newUser)
-}
-```
-
-<arrow v-click="3" x1="400" y1="420" x2="230" y2="330" color="#564" width="3" arrowSize="1" />
-
-[^1]: [Learn More](https://sli.dev/guide/syntax.html#line-highlighting)
-
-<style>
-.footnotes-sep {
-  @apply mt-20 opacity-10;
-}
-.footnotes {
-  @apply text-sm opacity-75;
-}
-.footnote-backref {
-  display: none;
-}
-</style>
+</v-clicks>
 
 ---
 
-# Components
+# Auditoinnin tavoitteet
 
-<div grid="~ cols-2 gap-4">
-<div>
-
-You can use Vue components directly inside your slides.
-
-We have provided a few built-in components like `<Tweet/>` and `<Youtube/>` that you can use directly. And adding your custom components is also super easy.
-
-```html
-<Counter :count="10" />
-```
-
-<!-- ./components/Counter.vue -->
-<Counter :count="10" m="t-4" />
-
-Check out [the guides](https://sli.dev/builtin/components.html) for more.
-
-</div>
-<div>
-
-```html
-<Tweet id="1390115482657726468" />
-```
-
-<Tweet id="1390115482657726468" scale="0.65" />
-
-</div>
-</div>
-
-
----
-class: px-20
----
-
-# Themes
-
-Slidev comes with powerful theming support. Themes can provide styles, layouts, components, or even configurations for tools. Switching between themes by just **one edit** in your frontmatter:
-
-<div grid="~ cols-2 gap-2" m="-t-2">
-
-```yaml
----
-theme: default
----
-```
-
-```yaml
----
-theme: seriph
----
-```
-
-<img border="rounded" src="https://github.com/slidevjs/themes/blob/main/screenshots/theme-default/01.png?raw=true">
-
-<img border="rounded" src="https://github.com/slidevjs/themes/blob/main/screenshots/theme-seriph/01.png?raw=true">
-
-</div>
-
-Read more about [How to use a theme](https://sli.dev/themes/use.html) and
-check out the [Awesome Themes Gallery](https://sli.dev/themes/gallery.html).
-
----
-preload: false
----
-
-# Animations
-
-Animations are powered by [@vueuse/motion](https://motion.vueuse.org/).
-
-```html
-<div
-  v-motion
-  :initial="{ x: -80 }"
-  :enter="{ x: 0 }">
-  Slidev
-</div>
-```
-
-<div class="w-60 relative mt-6">
-  <div class="relative w-40 h-40">
-    <img
-      v-motion
-      :initial="{ x: 800, y: -100, scale: 1.5, rotate: -50 }"
-      :enter="final"
-      class="absolute top-0 left-0 right-0 bottom-0"
-      src="https://sli.dev/logo-square.png"
-    />
-    <img
-      v-motion
-      :initial="{ y: 500, x: -100, scale: 2 }"
-      :enter="final"
-      class="absolute top-0 left-0 right-0 bottom-0"
-      src="https://sli.dev/logo-circle.png"
-    />
-    <img
-      v-motion
-      :initial="{ x: 600, y: 400, scale: 2, rotate: 100 }"
-      :enter="final"
-      class="absolute top-0 left-0 right-0 bottom-0"
-      src="https://sli.dev/logo-triangle.png"
-    />
+<div class="grid grid-cols-2 gap-4">
+  <div v-click class="bg-blue-500 text-white p-4 rounded-lg">
+    <carbon-document-add class="text-3xl mb-2" />
+    <div class="font-bold">Arvioida nykyinen Matomo-toteutus</div>
   </div>
-
-  <div
-    class="text-5xl absolute top-14 left-40 text-[#2B90B6] -z-1"
-    v-motion
-    :initial="{ x: -80, opacity: 0}"
-    :enter="{ x: 0, opacity: 1, transition: { delay: 2000, duration: 1000 } }">
-    Slidev
+  <div v-click class="bg-green-500 text-white p-4 rounded-lg">
+    <carbon-search class="text-3xl mb-2" />
+    <div class="font-bold">Tunnistaa puutteet seurannassa ja raportoinnissa</div>
+  </div>
+  <div v-click class="bg-yellow-500 text-white p-4 rounded-lg">
+    <carbon-chart-average class="text-3xl mb-2" />
+    <div class="font-bold">Arvioida tietojen tarkkuus ja luotettavuus</div>
+  </div>
+  <div v-click class="bg-red-500 text-white p-4 rounded-lg">
+    <carbon-security class="text-3xl mb-2" />
+    <div class="font-bold">Varmistaa yksityisyydensuojasäännösten noudattaminen</div>
   </div>
 </div>
 
-<!-- vue script setup scripts can be directly used in markdown, and will only affects current page -->
-<script setup lang="ts">
-const final = {
-  x: 0,
-  y: 0,
-  rotate: 0,
-  scale: 1,
-  transition: {
-    type: 'spring',
-    damping: 10,
-    stiffness: 20,
-    mass: 2
-  }
-}
-</script>
+---
 
-<div
-  v-motion
-  :initial="{ x:35, y: 40, opacity: 0}"
-  :enter="{ y: 0, opacity: 1, transition: { delay: 3500 } }">
+# Keskeiset painopistealueet
 
-[Learn More](https://sli.dev/guide/animations.html#motion)
-
+<div class="grid grid-cols-2 gap-4">
+  <div v-click="1">
+    <h3 class="text-orange-500"><carbon-settings class="inline-block" /> Seurannan asetukset</h3>
+  </div>
+  <div v-click="2">
+    <h3 class="text-green-500"><carbon-chart-line class="inline-block" /> Tavoitteiden määrittely</h3>
+  </div>
+  <div v-click="3">
+    <h3 class="text-blue-500"><carbon-shopping-cart class="inline-block" /> Verkkokaupan seuranta</h3>
+  </div>
+  <div v-click="4">
+    <h3 class="text-purple-500"><carbon-cube class="inline-block" /> Mukautetut ulottuvuudet</h3>
+  </div>
+  <div v-click="5">
+    <h3 class="text-red-500"><carbon-user-profile class="inline-block" /> Segmentointi</h3>
+  </div>
+  <div v-click="6">
+    <h3 class="text-yellow-500"><carbon-report class="inline-block" /> Raporttien käyttö</h3>
+  </div>
 </div>
 
 ---
 
-# LaTeX
+# Menetelmät
 
-LaTeX is supported out-of-box powered by [KaTeX](https://katex.org/).
+<v-clicks>
 
-<br>
+1. 🔍 Tilin tarkastelu ja asetusten analysointi
+2. 🧪 Seurantakoodin tarkastus
+3. 📊 Tietojen laadun arviointi
+4. 👥 Käyttäjähaastattelut
+5. 🏆 Vertailu parhaisiin käytäntöihin
+6. ⚡ Suorituskykytestaus
 
-Inline $\sqrt{3x-1}+(1+x)^2$
-
-Block
-$$
-\begin{array}{c}
-
-\nabla \times \vec{\mathbf{B}} -\, \frac1c\, \frac{\partial\vec{\mathbf{E}}}{\partial t} &
-= \frac{4\pi}{c}\vec{\mathbf{j}}    \nabla \cdot \vec{\mathbf{E}} & = 4 \pi \rho \\
-
-\nabla \times \vec{\mathbf{E}}\, +\, \frac1c\, \frac{\partial\vec{\mathbf{B}}}{\partial t} & = \vec{\mathbf{0}} \\
-
-\nabla \cdot \vec{\mathbf{B}} & = 0
-
-\end{array}
-$$
-
-<br>
-
-[Learn more](https://sli.dev/guide/syntax#latex)
+</v-clicks>
 
 ---
 
-# Diagrams
+# Havainnot: Seurannan asetukset
 
-You can create diagrams / graphs from textual descriptions, directly in your Markdown.
+<div class="flex justify-center h-100">  
 
-<div class="grid grid-cols-3 gap-10 pt-4 -mb-6">
-
-```mermaid {scale: 0.5}
-sequenceDiagram
-    Alice->John: Hello John, how are you?
-    Note over Alice,John: A typical interaction
-```
-
-```mermaid {theme: 'neutral', scale: 0.8}
+```mermaid {scale: 0.8}
 graph TD
-B[Text] --> C{Decision}
-C -->|One| D[Result 1]
-C -->|Two| E[Result 2]
-```
-
-```plantuml {scale: 0.7}
-@startuml
-
-package "Some Group" {
-  HTTP - [First Component]
-  [Another Component]
-}
-
-node "Other Groups" {
-  FTP - [Second Component]
-  [First Component] --> FTP
-}
-
-cloud {
-  [Example 1]
-}
-
-
-database "MySql" {
-  folder "This is my folder" {
-    [Folder 3]
-  }
-  frame "Foo" {
-    [Frame 4]
-  }
-}
-
-
-[Another Component] --> [Example 1]
-[Example 1] --> [Folder 3]
-[Folder 3] --> [Frame 4]
-
-@enduml
+A[Seurantakoodi] --> B{Oikein toteutettu?}
+B -->|Kyllä| C[Tarkka tiedonkeruu]
+B -->|Ei| D[Tietojen eroavaisuudet]
+D --> E[Suosittele korjauksia]
+style A fill:#f9a825,stroke:#f57f17,stroke-width:2px
+style B fill:#64b5f6,stroke:#1976d2,stroke-width:2px
+style C fill:#81c784,stroke:#388e3c,stroke-width:2px
+style D fill:#e57373,stroke:#d32f2f,stroke-width:2px
+style E fill:#ffb74d,stroke:#f57c00,stroke-width:2px
 ```
 
 </div>
 
-[Learn More](https://sli.dev/guide/syntax.html#diagrams)
+---
 
+# Havainnot: Tavoitteiden määrittely
+
+<div class="grid grid-cols-2 gap-4">
+<div>
+
+## Nykytila
+<v-clicks>
+
+- 🎯 X tavoitetta määritelty
+- 🌪️ Y konversiosuppiloa asetettu
+- 📝 Z tapahtumaa seurataan
+
+</v-clicks>
+</div>
+<div>
+
+## Suositukset
+<v-clicks>
+
+- ➕ Lisää tavoitteita keskeisille käyttäjätoiminnoille
+- 🔍 Tarkenna konversiosuppiloita
+- 🔄 Toteuta tapahtumaseuranta vuorovaikutuksille
+
+</v-clicks>
+</div>
+</div>
+
+---
+layout: image-right
+image: '#2a2a2a'
+---
+
+# Suositukset
+
+<v-clicks>
+
+1. 🔄 Päivitä seurantakoodi kaikilla sivuilla
+2. 🛒 Toteuta laajennettu verkkokaupan seuranta
+3. 🧩 Aseta mukautetut ulottuvuudet käyttäjäominaisuuksille
+4. 🎯 Luo segmenttejä kohdennettua analyysia varten
+5. 📅 Määritä säännölliset automaattiset raportit
+6. 🎓 Järjestä henkilöstölle koulutusta Matomon käytöstä
+
+</v-clicks>
+
+---
+
+# Seuraavat vaiheet
+
+<div class="grid grid-cols-5 gap-4 mt-8">
+  <div v-click class="bg-blue-500 text-white p-4 rounded-lg text-center">
+    <carbon-task class="text-3xl mb-2" />
+    <div class="font-bold">Priorisoi suositukset</div>
+  </div>
+  <div v-click class="bg-green-500 text-white p-4 rounded-lg text-center">
+    <carbon-calendar class="text-3xl mb-2" />
+    <div class="font-bold">Luo toteutusaikataulu</div>
+  </div>
+  <div v-click class="bg-yellow-500 text-white p-4 rounded-lg text-center">
+    <carbon-user-multiple class="text-3xl mb-2" />
+    <div class="font-bold">Jaa vastuut</div>
+  </div>
+  <div v-click class="bg-red-500 text-white p-4 rounded-lg text-center">
+    <carbon-time class="text-3xl mb-2" />
+    <div class="font-bold">Aikatauluta seuranta-auditointi</div>
+  </div>
+  <div v-click class="bg-purple-500 text-white p-4 rounded-lg text-center">
+    <carbon-loop class="text-3xl mb-2" />
+    <div class="font-bold">Luo jatkuva seurantaprosessi</div>
+  </div>
+</div>
 
 ---
 layout: center
 class: text-center
 ---
 
-# Learn More
+# Kiitos
 
-[Documentations](https://sli.dev) · [GitHub](https://github.com/slidevjs/slidev) · [Showcases](https://sli.dev/showcases.html)
+<div class="text-2xl text-orange-500 font-bold mb-4">
+Kysymyksiä? Keskustellaan!
+</div>
+
+<div class="flex justify-center">
+  <div class="w-64 h-64 bg-gradient-to-br from-orange-400 to-red-500 rounded-full flex items-center justify-center text-white text-4xl font-bold">
+    Kiitos!
+  </div>
+</div>
+
+---
+
+# Ohjeita käyttäjälle
+
+<div class="pt-12">
+  <span @click="$slidev.nav.next" class="px-4 py-2 rounded cursor-pointer bg-white bg-opacity-10 hover:bg-opacity-20 transition duration-200 ease-in-out">
+    Siirry diaan "Käyttäjien hallinta Matomossa" <carbon:arrow-right class="inline"/>
+  </span>
+  <span @click="$nav.go(15)" class="px-4 py-2 rounded cursor-pointer bg-white bg-opacity-10 hover:bg-opacity-20 transition duration-200 ease-in-out">
+    Siirry diaan "Tagien hallinta Matomossa" <carbon:arrow-right class="inline"/>
+  </span>
+  <span @click="$nav.go(3)">/esityslista</span>
+</div>
+
+---
+
+# Käyttäjien hallinta Matomossa
+
+<div class="grid grid-cols-2 gap-4">
+<div>
+<v-clicks>
+
+1. Lisää käyttäjä Matomoon:
+   - Mene Matomon hallintapaneeliin
+   <img src="./assets/matomo_1.png" alt="Matomo hallintapaneeli" width="200" />
+   - Valitse vasemmalta "Käyttäjät"
+   - Klikkaa "Lisää uusi käyttäjä"
+   - Syötä käyttäjän sähköpostiosoite ja määritä salasana
+
+</v-clicks>
+</div>
+<div>
+<v-clicks>
+
+2. Anna käyttöoikeudet tiettyyn sivustoon:
+   - Etsi juuri luotu käyttäjä ja klikkaa "Muokkaa"
+   - Käyttäjän profiilisivulla näet listan Matomossa olevista sivustoista
+   - Valitse sivustokohtaisesti käyttöoikeus:
+     - Näytä: Tarkastele raportteja ja dataa
+     - Kirjoita: Tarkastele raportteja ja muokkaa asetuksia
+     - Admin: Täydet hallintaoikeudet
+     - Ei pääsyä: Ei näe mitään dataa
+
+</v-clicks>
+</div>
+</div>
+
+---
+
+# Käyttöoikeuksien hallinta
+
+<v-clicks>
+
+- Rajoitettu pääsy tiettyihin osioihin:
+  - Käytä Mukautettuja dimensioita, Segmenttejä tai Tavoitteita
+  - Rajoita näytettävää dataa käyttäjän oikeuksien perusteella
+
+- Varmistus ja ilmoitukset:
+  - Käyttäjä näkee vain sallitut sivustot tai osiot
+  - Lähetä ilmoitus sähköpostitse Matomon sisäänrakennetulla toiminnolla
+
+</v-clicks>
+
+---
+
+# Tagien hallinta
+
+<v-clicks>
+
+1. Luo uusi tagi:
+   - Mene Matomon hallintapaneeliin
+   - Valitse vasemmalta "Tagit"
+   - Klikkaa "Lisää uusi tagi"
+   - Syötä tagin nimi ja kuvaus
+
+</v-clicks>
+---
+
+# Tagien hallinta
+
+<v-clicks>
+
+2. Aseta tagi käyttäjän tai sivuston tagiin:
+   - Etsi juuri luotu tagi ja klikkaa "Muokkaa"
+   - Valitse sivustokohtaisesti tagin käyttäjä:
+     - Näytä: Tarkastele raportteja ja dataa
+     - Kirjoita: Tarkastele raportteja ja muokkaa asetuksia
+     - Admin: Täydet hallintaoikeudet
+     - Ei pääsyä: Ei näe mitään dataa
+
+</v-clicks>
+
+---
+
+# Tagien hallinta
+
+<v-clicks>
+
+3. Luo uusi tagi:
+   - Mene Matomon hallintapaneeliin
+   - Valitse vasemmalta "Tagit"
+   - Klikkaa "Lisää uusi tagi"
+   - Syötä tagin nimi ja kuvaus
+
+</v-clicks>

@@ -1,0 +1,57 @@
+# Auditing a Matomo Analytics Account of the City Riihimäki
+
+This presentation will guide you through the process of auditing a Matomo analytics account for the city of Riihimäki.
+
+## Getting Started
+
+Content is written in Finnish.
+
+1. **Edit the `slides.md` File**: Open the `slides.md` file in your preferred text editor and start editing your slides. Use the following structure as a starting point:
+
+   ```markdown
+   # Auditing a Matomo Analytics Account of the City Riihimäki
+
+   ## Introduction
+   - Overview of Matomo Analytics
+   - Importance of auditing analytics accounts
+
+   ## Step 1: Accessing the Matomo Account
+   - Log in to the Matomo dashboard
+   - Navigate to the Riihimäki account
+
+   ## Step 2: Reviewing Data Collection
+   - Check tracking code implementation
+   - Verify data accuracy and completeness
+
+   ## Step 3: Analyzing Traffic Sources
+   - Identify main traffic sources
+   - Evaluate the performance of each source
+
+   ## Step 4: Assessing User Behavior
+   - Analyze user engagement metrics
+   - Review user flow and behavior patterns
+
+   ## Step 5: Reporting and Recommendations
+   - Summarize findings
+   - Provide actionable recommendations
+
+   ## Conclusion
+   - Recap of the audit process
+   - Importance of regular audits
+   ```
+
+2. **Start the Slide Show**: Run the following command to start the slide show:
+   ```bash
+   npm run dev
+   ```
+
+3. **View the Presentation**: Open your web browser and visit `http://localhost:3030` to view your presentation.
+
+4. **Edit and Customize**: Continue editing the `slides.md` file to customize your presentation further. You can add images, code snippets, and more to enhance your slides.
+
+5. **Export the Presentation**: Once you are satisfied with your presentation, you can export it to PDF or other formats using the following command:
+   ```bash
+   slidev export
+   ```
+
+By following these steps, you will create a comprehensive presentation on auditing a Matomo analytics account for the city of Riihimäki using Slidev.
